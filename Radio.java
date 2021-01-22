@@ -8,7 +8,7 @@ public class Radio implements Interface {
     private boolean estado = false;
     private boolean estacion = false;
     private Float emisorasGuardas[] = new Float[12];
-    private Float emisora = 530f;
+    private Float emisora = 87.9f;
 
     // Constructor
     Radio(Vista vista) {
@@ -137,9 +137,9 @@ public class Radio implements Interface {
         estacion = !estacion;
 
         if (estacion) {
-            emisora = 87.9f;
-        } else {
             emisora = 530f;
+        } else {
+            emisora = 87.9f;
         }
 
         return estacion;
@@ -189,18 +189,17 @@ public class Radio implements Interface {
     @Override
     public double avanzar() {
         if (estacion) { // AM
-
-            if (emisora >= 107.9) {
-                emisora = 87.9f;
-            } else {
-                emisora += 0.2f;
-            }
-
-        } else { // FM
             if (emisora >= 1610f) {
                 emisora = 530f;
             } else {
                 emisora += 10f;
+            }
+
+        } else { // FM
+            if (emisora >= 107.9) {
+                emisora = 87.9f;
+            } else {
+                emisora += 0.2f;
             }
 
         }
